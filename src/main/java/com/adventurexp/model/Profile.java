@@ -9,7 +9,7 @@ import java.time.LocalDate;
 public class Profile {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String name;

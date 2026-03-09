@@ -21,6 +21,10 @@ public class Equipment {
     @Column(nullable = false)
     private boolean operational;
 
+    @ManyToOne
+    @JoinColumn(name = "activity_id") // Dette opretter en fremmednøgle i databasen
+    private Activity activity;
+
     // --- CONSTRUCTORS ---
 
     // VIGTIGT: JPA kræver en tom constructor for at kunne hente data fra databasen
