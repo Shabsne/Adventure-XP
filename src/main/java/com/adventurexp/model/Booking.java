@@ -5,11 +5,12 @@ import java.time.LocalDateTime;
 public class Booking {
     private int id;
     private Profile profile;
+    private Activity activity
     private int participants;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 
-    public Booking(int id, Profile profile, int participants, LocalDateTime startTime, LocalDateTime endTime) {
+    public Booking(int id, Profile profile, Activity activity, int participants, LocalDateTime startTime, LocalDateTime endTime) {
         this.id = id;
         this.profile = profile;
         this.participants = participants;
@@ -31,6 +32,14 @@ public class Booking {
 
     public void setProfile(Profile profile) {
         this.profile = profile;
+    }
+
+    public Activity getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
     }
 
     public int getParticipants() {
