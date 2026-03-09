@@ -7,11 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="adventure-xp" />
+        <module name="Adventure-XP" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Adventure-XP" options="-parameters" />
       <module name="adventure-xp" options="-parameters" />
     </option>
   </component>
