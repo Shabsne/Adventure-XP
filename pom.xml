@@ -17,7 +17,7 @@
     <description>Projekt til styring af AdventureXP Action Center</description>
 
     <properties>
-        <java.version>25</java.version>
+        <java.version>21</java.version>
     </properties>
 
     <dependencies>

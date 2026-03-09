@@ -1,0 +1,28 @@
+package com.adventurexp.service;
+
+import com.adventurexp.model.Profile;
+import com.adventurexp.repository.ProfileRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class ProfileService {
+
+    @Autowired
+    private ProfileRepository profileRepository;
+
+    public ProfileService(ProfileRepository profileRepository) {
+        this.profileRepository = profileRepository;
+    }
+
+    public Profile login(String mail, String password) {
+
+        Profile profile = profileRepository.findByMail(mail);
+
+        if (profile != null && profile.getPassword().equals(password)) {
+            return profile;
+        }
+
+        return null;
+    }
+}
