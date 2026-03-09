@@ -1,6 +1,7 @@
 package com.adventurexp.service;
 
 import com.adventurexp.model.Booking;
+import com.adventurexp.model.BookingStatus;
 import com.adventurexp.model.Profile;
 import com.adventurexp.model.Activity;
 import com.adventurexp.repository.BookingRepository;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Period;
 import java.util.List;
 import java.util.Optional;
@@ -34,6 +36,7 @@ public class BookingService {
         bookingRepository.deleteById(id);
     }
 
+    //ISSUE #91
     private void validateAgeRequirements(Booking booking) {
         Activity activity = booking.getActivity();
         Profile profile = booking.getProfile();
@@ -58,5 +61,20 @@ public class BookingService {
             throw new IllegalArgumentException("Fødselsdato må ikke være null!");
         }
         return Period.between(birthDate, LocalDate.now()).getYears();
+    }
+
+    public void cancelNoShowBookings() {
+        List<Booking> bookings = bookingRepository.findAll();
+        LocalDateTime now = LocalDateTime.now();
+
+        for (Booking booking : bookings) {
+            boolean hasStarted = booking.getStartTime().isBefore(now);
+            boolean notMarkedAsShowedUp = booking.getStatus() == BookingStatus.ACTIVE;
+
+            if (hasStarted && notMarkedAsShowedUp) {
+                booking.setStatus(BookingStatus.CANCELLED);
+                bookingRepository.save(booking);
+            }
+        }
     }
 }

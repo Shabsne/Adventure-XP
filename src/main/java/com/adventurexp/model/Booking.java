@@ -20,6 +20,7 @@ public class Booking {
     private int participants;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
+    private BookingStatus status;
 
     public Booking() {
 
@@ -79,6 +80,14 @@ public class Booking {
 
     public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
+    }
+
+    public BookingStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(BookingStatus status) {
+        this.status = status;
     }
 
     @Override
