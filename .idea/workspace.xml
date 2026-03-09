@@ -4,21 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="43110325-f238-45d4-b16c-da7f822b8deb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/adventurexp/controller/ProfileController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/adventurexp/service/ProfileService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/Profile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/templates/Login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="fc4557db-d213-4a35-904e-ef3ed251a281" name="Changes" comment="Unversioned files commit">
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adventurexp/repository/ProfileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adventurexp/repository/ProfileRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/AdventureXpApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/AdventureXpApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/config/DataInit.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/config/DataInit.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/controller/EquipmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/controller/EquipmentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/model/Equipment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/model/Equipment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/repository/EquipmentRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/repository/EquipmentRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/service/EquipmentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/service/EquipmentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adventurexp/model/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adventurexp/model/Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adventurexp/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adventurexp/model/Booking.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,18 +21,19 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
-        <option value="Interface" />
         <option value="Class" />
-        <option value="JavaScript File" />
-        <option value="HTML File" />
+        <option value="Interface" />
+        <option value="Dockerfile" />
       </list>
     </option>
+  </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="main" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="Docker" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,13 +41,13 @@
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
     &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;NikolajPedersen29&quot;
+    &quot;assignee&quot;: &quot;Isak1525&quot;
   }
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;git@github.com:Shabsne/Adventure-XP.git&quot;,
-    &quot;accountId&quot;: &quot;54c3f7a5-97fd-4592-a371-dbfc6cd916dd&quot;
+    &quot;url&quot;: &quot;https://github.com/Shabsne/Adventure-XP.git&quot;,
+    &quot;accountId&quot;: &quot;2ab92087-7e4a-4394-bfba-3352a5b672a6&quot;
   },
   &quot;recentNewPullRequestHead&quot;: {
     &quot;server&quot;: {
@@ -67,41 +61,38 @@
   }
 }</component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 3
 }</component>
-  <component name="ProjectId" id="3AhVPIgGqPQV9SIV32REBwOyuGq" />
+  <component name="ProjectId" id="3AhVPR9Y01XVlqz1L0Hu4Vs2UnX" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "Spring Boot.AdventureXpApplication.executor": "Run",
-    "git-widget-placeholder": "Profile",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Adventure-XP" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Adventure-XP" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
     <configuration name="AdventureXpApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="adventure-xp" />
@@ -121,28 +112,29 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="43110325-f238-45d4-b16c-da7f822b8deb" name="Changes" comment="" />
-      <created>1773044764931</created>
+      <changelist id="fc4557db-d213-4a35-904e-ef3ed251a281" name="Changes" comment="" />
+      <created>1773044764362</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1773044764931</updated>
-      <workItem from="1773044766186" duration="3736000" />
+      <updated>1773044764362</updated>
+      <workItem from="1773044765502" duration="2946000" />
+      <workItem from="1773047725224" duration="2030000" />
     </task>
-    <task id="LOCAL-00001" summary="Added Profile">
+    <task id="LOCAL-00001" summary="Activity has been added throughout the layers">
       <option name="closed" value="true" />
-      <created>1773047880192</created>
+      <created>1773047572846</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1773047880192</updated>
+      <updated>1773047572846</updated>
     </task>
-    <task id="LOCAL-00002" summary="Added Profile">
+    <task id="LOCAL-00002" summary="Unversioned files commit">
       <option name="closed" value="true" />
-      <created>1773048460097</created>
+      <created>1773047810382</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1773048460097</updated>
+      <updated>1773047810382</updated>
     </task>
     <option name="localTasksCounter" value="3" />
     <servers />
@@ -151,7 +143,8 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added Profile" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Profile" />
+    <MESSAGE value="Activity has been added throughout the layers" />
+    <MESSAGE value="Unversioned files commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Unversioned files commit" />
   </component>
 </project>

@@ -19,18 +19,19 @@ public class Activity {
     private int minAge;
     private int maxAge;
 
-    // Relation til udstyr (En aktivitet har mange stykker udstyr)
+    // mappedBy refererer til variabelnavnet 'activity' i hhv. Booking og Equipment
     @OneToMany(mappedBy = "activity", cascade = CascadeType.ALL)
-    private List<Equipment> equipments = new ArrayList<>();
+    private List<Booking> bookings;
 
-    // Relation til bookinger (En aktivitet har mange bookinger)
     @OneToMany(mappedBy = "activity", cascade = CascadeType.ALL)
-    private List<Booking> bookings = new ArrayList<>();
+    private List<Equipment> equipments;
 
     // VIGTIGT: JPA kræver en tom constructor
     public Activity() {}
 
-    public Activity(String name, String description, int minParticipants, int maxParticipants, int duration, int minAge, int maxAge) {
+    public Activity(int id, String name, String description, int minParticipants, int maxParticipants, int duration, int minAge, int maxAge,
+                    List<Booking> bookings, List<Equipment> equipments) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.minParticipants = minParticipants;
@@ -38,8 +39,9 @@ public class Activity {
         this.duration = duration;
         this.minAge = minAge;
         this.maxAge = maxAge;
+        this.bookings = bookings;
+        this.equipments = equipments;
     }
-
 
     // --- GETTERS & SETTERS ---
     public int getId() { return id; }

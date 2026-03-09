@@ -1,10 +1,21 @@
 package com.adventurexp.model;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 
+@Entity
 public class Booking {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    // I Booking.java
+    @ManyToOne
+    @JoinColumn(name = "profile_id") // Dette fortæller databasen hvordan den skal linke
     private Profile profile;
+
+    @ManyToOne
+    @JoinColumn(name = "activity_id") // Dette laver fremmednøglen i DB
     private Activity activity;
     private int participants;
     private LocalDateTime startTime;
