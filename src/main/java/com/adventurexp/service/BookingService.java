@@ -1,6 +1,8 @@
 package com.adventurexp.service;
 
 import com.adventurexp.model.Booking;
+import com.adventurexp.model.Profile;
+import com.adventurexp.model.Activity;
 import com.adventurexp.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,7 +42,7 @@ public class BookingService {
             throw new IllegalArgumentException("Booking skal have både en aktivitet og en profil.");
         }
 
-        int customerAge = calculateAge(profile.getAge());
+        int customerAge = calculateAge(profile.getBirthDate());
 
         if (customerAge < activity.getMinAge()) {
             throw new IllegalArgumentException("For ung til denne aktivitet. Minimum: " + activity.getMinAge());
@@ -49,12 +51,12 @@ public class BookingService {
         if (customerAge > activity.getMaxAge()) {
             throw new IllegalArgumentException("For gammel til denne aktivitet. Maksimumsalder: " + activity.getMaxAge());
         }
+    }
 
-        private int calculateAge(LocalDate birthDate) {
-            if (birthDate == null) {
-                throw new IllegalArgumentException("Fødselsdato må ikke være null!");
-            }
-            return Period.between(birthDate, LocalDate.now()).getYears();
+    private int calculateAge(LocalDate birthDate) {
+        if (birthDate == null) {
+            throw new IllegalArgumentException("Fødselsdato må ikke være null!");
         }
+        return Period.between(birthDate, LocalDate.now()).getYears();
     }
 }
