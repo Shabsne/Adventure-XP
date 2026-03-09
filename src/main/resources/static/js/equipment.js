@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:8080/api/equipment';
+const apiUrl = '/api/equipment';
 
 // 1. Hent alt udstyr når siden indlæses
 document.addEventListener('DOMContentLoaded', fetchEquipment);
