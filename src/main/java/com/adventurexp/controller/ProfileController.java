@@ -4,6 +4,7 @@ import com.adventurexp.DTO.LoginRequest;
 import com.adventurexp.model.Profile;
 import com.adventurexp.service.ProfileService;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,8 +19,14 @@ public class ProfileController {
         this.profileService = profileService;
     }
 
+    @GetMapping("/login")
+        public String loginPage() {
+        return "login";
+    }
+
+
     @PostMapping("/login")
-    public String login(@RequestBody LoginRequest loginRequest, HttpSession session) {
+    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest, HttpSession session) {
         Profile profile = profileService.login(
                 loginRequest.getMail(),
                 loginRequest.getPassword()
@@ -28,13 +35,13 @@ public class ProfileController {
         if (profile != null) {
             session.setAttribute("user", profile);
 
-            return "success";
+            return ResponseEntity.ok("Login succes");
         }
 
-        return "error";
+        return ResponseEntity.status(401).body("Wrong mail or password");
     }
 
-    @PostMapping("logout")
+    @PostMapping("/logout")
     public void logout(HttpSession session) {
         session.invalidate();
     }
