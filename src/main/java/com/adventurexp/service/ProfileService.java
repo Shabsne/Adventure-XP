@@ -25,4 +25,9 @@ public class ProfileService {
 
         return null;
     }
+
+    public Profile readProfile(int id) {
+        return profileRepository.findById(id).orElse(null);
+    }
+
 }

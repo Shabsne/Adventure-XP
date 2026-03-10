@@ -1,6 +1,10 @@
 package com.adventurexp.service;
 
+import com.adventurexp.model.Activity;
 import com.adventurexp.model.Equipment;
+import com.adventurexp.model.Profile;
+import com.adventurexp.model.Role;
+import com.adventurexp.repository.ActivityRepository;
 import com.adventurexp.repository.EquipmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +17,12 @@ public class EquipmentService {
 
     @Autowired
     private EquipmentRepository equipmentRepository;
+
+    @Autowired
+    private ProfileService profileService;
+
+    @Autowired
+    private ActivityRepository activityRepository;
 
     // Henter alt udstyr (God til overblikssider)
     public List<Equipment> getAllEquipment() {
@@ -59,4 +69,29 @@ public class EquipmentService {
 
         return count >= requiredAmount;
     }
+
+    public void updateEquipmentStatus(int activityId, int equipmentId, boolean newStatus, Profile user) {
+        // 1. Sikkerhedstjek: Kun rollen 'Service' må gøre udstyr "OK" igen (re-aktivere)
+        if (newStatus && user.getRole() != Role.Service) {
+            throw new RuntimeException("Adgang nægtet: Kun Service-medarbejdere må godkende defekt udstyr.");
+        }
+
+        // 2. Find aktiviteten (vi bruger activityRepository her)
+        Activity activity = activityRepository.findById(activityId)
+                .orElseThrow(() -> new RuntimeException("Aktivitet ikke fundet"));
+
+        // 3. Find det specifikke stykke udstyr i aktivitetens liste
+        Equipment equipment = activity.getEquipments().stream()
+                .filter(e -> e.getId() == equipmentId)
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Udstyret blev ikke fundet under denne aktivitet"));
+
+        // 4. Opdater status
+        equipment.setOperational(newStatus);
+
+        // 5. Gem via Activity (pga. CascadeType.ALL i din model)
+        activityRepository.save(activity);
+    }
+
+
 }

@@ -26,6 +26,14 @@ public class Activity {
     @OneToMany(mappedBy = "activity", cascade = CascadeType.ALL)
     private List<Equipment> equipments;
 
+    // for datainits skyld
+    public Activity(String name, String description, int minParticipants, int maxParticipants, int minAge) {
+        this.name = name;
+        this.description = description;
+        this.minParticipants = minParticipants;
+        this.maxParticipants = maxParticipants;
+        this.minAge = minAge;
+    }
 
     public Activity() {}
 
