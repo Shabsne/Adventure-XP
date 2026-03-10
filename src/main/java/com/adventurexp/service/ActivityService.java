@@ -91,5 +91,19 @@ public class ActivityService {
         return true;
     }
 
+    public String getActivityStatus(int activityId) {
+        Activity activity = readActivity(activityId);
+        if (activity == null) return "Ukendt";
+
+        int readyEquipment = getReadyEquipmentCount(activityId);
+
+        // Hvis vi har mindre udstyr klar end minimumskravet for aktiviteten
+        if (readyEquipment < activity.getMinParticipants()) {
+            return "LUKKET";
+        }
+
+        return "KLAR";
+    }
+
 
 }

@@ -38,6 +38,14 @@ public class Equipment {
         this.operational = operational;
     }
 
+    // For datainit skyld
+    public Equipment(String name, String description, boolean operational, Activity activity) {
+        this.name = name;
+        this.description = description;
+        this.operational = operational;
+        this.activity = activity;
+    }
+
     // --- GETTERS & SETTERS ---
     // De er nødvendige for at Spring kan læse og skrive til felterne
 
