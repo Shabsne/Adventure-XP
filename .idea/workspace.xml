@@ -4,18 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc4557db-d213-4a35-904e-ef3ed251a281" name="Changes" comment="">
+    <list default="true" id="fc4557db-d213-4a35-904e-ef3ed251a281" name="Changes" comment="Rettede getReadyEquipmentCount da den kørte dobbelt null-tjek">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adventurexp/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adventurexp/controller/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/Profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/templates/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/templates/Login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/controller/ProfileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/controller/ProfileController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/model/Activity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/model/Activity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/model/Booking.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/model/Booking.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/model/Equipment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/model/Equipment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/model/Profile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/model/Profile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/Profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/templates/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/templates/Login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adventurexp/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adventurexp/service/BookingService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Docker" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -76,16 +68,11 @@
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "Spring Boot.AdventureXpApplication.executor": "Run",
-    "git-widget-placeholder": "Profile",
+    "git-widget-placeholder": "Lager-tjek-og-save-booking",
     "kotlin-language-version-configured": "true",
     "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
@@ -146,7 +133,15 @@
       <option name="project" value="LOCAL" />
       <updated>1773047810382</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Rettede getReadyEquipmentCount da den kørte dobbelt null-tjek">
+      <option name="closed" value="true" />
+      <created>1773133757775</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1773133757775</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,6 +150,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Activity has been added throughout the layers" />
     <MESSAGE value="Unversioned files commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Unversioned files commit" />
+    <MESSAGE value="Rettede getReadyEquipmentCount da den kørte dobbelt null-tjek" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rettede getReadyEquipmentCount da den kørte dobbelt null-tjek" />
   </component>
 </project>
