@@ -19,14 +19,14 @@ public class Activity {
     private int minAge;
     private int maxAge;
 
-    // mappedBy refererer til variabelnavnet 'activity' i hhv. Booking og Equipment
+
     @OneToMany(mappedBy = "activity", cascade = CascadeType.ALL)
     private List<Booking> bookings;
 
     @OneToMany(mappedBy = "activity", cascade = CascadeType.ALL)
     private List<Equipment> equipments;
 
-    // VIGTIGT: JPA kræver en tom constructor
+
     public Activity() {}
 
     public Activity(int id, String name, String description, int minParticipants, int maxParticipants, int duration, int minAge, int maxAge,

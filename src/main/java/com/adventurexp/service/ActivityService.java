@@ -1,6 +1,9 @@
 package com.adventurexp.service;
 
 import com.adventurexp.model.Activity;
+import com.adventurexp.model.Equipment;
+import com.adventurexp.model.Profile;
+import com.adventurexp.model.Role;
 import com.adventurexp.repository.ActivityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,11 +63,33 @@ public class ActivityService {
 
     public int getReadyEquipmentCount(int activityId) {
         Activity activity = readActivity(activityId);
-        if (activity != null) {
+        if (activity != null && activity.getEquipments() != null) {
             return (int) activity.getEquipments().stream()
-                    .filter(e -> !e.isOperational())
+                    .filter(e -> e.isOperational())
                     .count();
         }
         return 0;
     }
+
+    public boolean checkCapacity(int activityId, int requestedParticipants) {
+        Activity activity = readActivity(activityId);
+        if (activity == null) return false;
+
+        int readyEquipment = getReadyEquipmentCount(activityId);
+
+        // Tjekker om der er udstyr nok til antallet af personer
+        if (requestedParticipants > readyEquipment) {
+            return false;
+        }
+
+        // Tjekker om antallet er inden for aktivitetens tilladte rammer?
+        if (requestedParticipants < activity.getMinParticipants() ||
+                requestedParticipants > activity.getMaxParticipants()) {
+            return false;
+        }
+
+        return true;
+    }
+
+
 }
