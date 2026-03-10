@@ -20,6 +20,9 @@ public class BookingService {
     @Autowired
     private BookingRepository bookingRepository;
 
+    @Autowired
+    private ActivityService activityService;
+
     public List<Booking> getAllBookings() {
         return bookingRepository.findAll();
     }
@@ -29,6 +32,20 @@ public class BookingService {
     }
 
     public Booking saveBooking(Booking booking) {
+        validateAgeRequirements(booking);
+
+        //Tjek om der er nok udstyr og kapacitet
+        boolean hasCapacity = activityService.checkCapacity(
+                booking.getActivity().getId(),
+                booking.getParticipants()
+        );
+
+        if (!hasCapacity) {
+            throw new IllegalArgumentException(
+                "Ikke nok operationelt udstyr eller for mange deltagere til denne aktivitet"
+            );
+        }
+
         return bookingRepository.save(booking);
     }
 
