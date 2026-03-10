@@ -63,12 +63,12 @@ public class ActivityService {
 
     public int getReadyEquipmentCount(int activityId) {
         Activity activity = readActivity(activityId);
-        if (activity != null && activity.getEquipments() != null) {
-            return (int) activity.getEquipments().stream()
-                    .filter(e -> e.isOperational())
-                    .count();
+        if (activity != null && activity.getEquipments() == null) {
+            return 0;
         }
-        return 0;
+        return (int) activity.getEquipments().stream()
+                .filter(e -> e.isOperational())
+                .count();
     }
 
     public boolean checkCapacity(int activityId, int requestedParticipants) {
