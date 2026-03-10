@@ -4,14 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc4557db-d213-4a35-904e-ef3ed251a281" name="Changes" comment="Unversioned files commit">
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/compose.yml" afterDir="false" />
+    <list default="true" id="fc4557db-d213-4a35-904e-ef3ed251a281" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adventurexp/model/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adventurexp/model/Activity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adventurexp/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adventurexp/model/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adventurexp/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adventurexp/controller/ProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/templates/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/templates/Login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/controller/ProfileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/controller/ProfileController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/model/Activity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/model/Activity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/model/Booking.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/model/Booking.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/model/Equipment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/model/Equipment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/model/Profile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/model/Profile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/templates/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/templates/Login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,19 +72,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.AdventureXpApplication.executor": "Run",
+    "git-widget-placeholder": "Profile",
+    "kotlin-language-version-configured": "true",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Adventure-XP" />
