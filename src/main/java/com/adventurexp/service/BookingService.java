@@ -89,9 +89,23 @@ public class BookingService {
             boolean notMarkedAsShowedUp = booking.getStatus() == BookingStatus.ACTIVE;
 
             if (hasStarted && notMarkedAsShowedUp) {
-                booking.setStatus(BookingStatus.CANCELLED);
+                booking.setStatus(BookingStatus.NO_SHOW);
                 bookingRepository.save(booking);
             }
         }
+    }
+
+    // ISSUE #88
+    public Booking updateBookingStatus(int bookingId, BookingStatus status) {
+        Booking booking = bookingRepository.findById(bookingId)
+                .orElseThrow(() -> new IllegalArgumentException("Booking ikke fundet med id: " + bookingId));
+
+        if (booking.getStatus() == BookingStatus.CANCELLED ||
+            booking.getStatus() == BookingStatus.NO_SHOW) {
+            throw new IllegalArgumentException("Kan ikke ændre status på en aflyst booking.");
+        }
+
+        booking.setStatus(status);
+        return bookingRepository.save(booking);
     }
 }
