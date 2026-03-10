@@ -1,4 +1,6 @@
-async function login() {
+async function login(event) {
+
+    event.preventDefault()
 
     const mail = document.getElementById("mail").value;
     const password = document.getElementById("password").value;
@@ -15,7 +17,7 @@ async function login() {
     });
 
     if(response.ok){
-        window.location.href = "/dashboard";
+        window.location.href = "/dashboard.html";
     } else {
         alert("Forkert login");
     }

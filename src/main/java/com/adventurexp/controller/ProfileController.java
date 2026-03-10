@@ -19,10 +19,6 @@ public class ProfileController {
         this.profileService = profileService;
     }
 
-    @GetMapping("/login")
-        public String loginPage() {
-        return "login";
-    }
 
 
     @PostMapping("/login")
