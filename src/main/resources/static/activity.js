@@ -200,11 +200,12 @@ async function confirmBooking() {
     btn.textContent = 'Sender...';
     btn.disabled    = true;
 
-    // Byg startTime og endTime som LocalDateTime (aktivitet varer 2 timer)
+    // Byg startTime og endTime ud fra aktivitetens faktiske varighed (minutter)
+    const durationMinutes = allActivities.find(a => a.id === currentActivityId)?.duration || 120;
     const [startHour, startMin] = selectedSlot.split(':').map(Number);
     const startTime = new Date(date);
     startTime.setHours(startHour, startMin, 0, 0);
-    const endTime = new Date(startTime.getTime() + 2 * 60 * 60 * 1000);
+    const endTime = new Date(startTime.getTime() + durationMinutes * 60 * 1000);
 
     const toLocalDT = (d) => {
         const pad = n => String(n).padStart(2, '0');
