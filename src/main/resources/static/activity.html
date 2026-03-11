@@ -2,21 +2,75 @@
 <html lang="da">
 <head>
   <meta charset="UTF-8">
-  <title>AdventureXP Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdventureXP | Aktiviteter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>AdventureXP Activity Control</h1>
-  <div class="user-selector">
-    <label>Logget ind som ID:</label>
-    <input type="number" id="userIdInput" value="1">
-    <small>(Brug ID for en 'Service' profil for at rette udstyr)</small>
+
+<div class="bg-orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<header class="main-header">
+  <div class="header-inner">
+    <div class="logo">Adventure<span>XP</span></div>
+    <p class="tagline">Vælg din næste udfordring</p>
   </div>
 </header>
 
 <main id="dashboard" class="dashboard-grid">
+  <div class="loader">
+    <div class="loader-spinner"></div>
+    <span>Henter oplevelser...</span>
+  </div>
 </main>
+
+<!-- MODAL -->
+<div id="modal-overlay" class="modal-overlay" onclick="closeModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+
+    <div class="modal-image-wrap">
+      <img id="modal-img" src="" alt="" />
+      <div class="modal-image-gradient"></div>
+      <div class="modal-badge-group">
+        <span id="modal-participants" class="modal-badge"></span>
+        <span id="modal-age" class="modal-badge"></span>
+      </div>
+    </div>
+
+    <div class="modal-body">
+      <h2 id="modal-title"></h2>
+      <p id="modal-desc"></p>
+
+      <div class="booking-section">
+        <h3 class="section-label">📅 Vælg dato</h3>
+        <input type="date" id="booking-date" class="date-picker" />
+
+        <h3 class="section-label">⏱ Vælg starttidspunkt</h3>
+        <div class="time-slots" id="time-slots">
+          <button class="slot" onclick="selectSlot(this)">09:00</button>
+          <button class="slot" onclick="selectSlot(this)">11:00</button>
+          <button class="slot" onclick="selectSlot(this)">13:00</button>
+          <button class="slot" onclick="selectSlot(this)">15:00</button>
+          <button class="slot" onclick="selectSlot(this)">17:00</button>
+          <button class="slot" onclick="selectSlot(this)">19:00</button>
+        </div>
+
+        <h3 class="section-label">👥 Antal deltagere</h3>
+        <input type="number" id="booking-participants" class="date-picker"
+               min="1" value="1" placeholder="Antal deltagere" />
+
+        <button class="btn-confirm" id="confirm-btn" onclick="confirmBooking()">Bekræft booking →</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script src="activity.js"></script>
 </body>
