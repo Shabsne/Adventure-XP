@@ -1,5 +1,7 @@
 package com.adventurexp.service;
 
+import com.adventurexp.exceptions.ResourceNotFoundException;
+import com.adventurexp.exceptions.UnauthorizedException;
 import com.adventurexp.model.Activity;
 import com.adventurexp.model.Equipment;
 import com.adventurexp.model.Profile;
@@ -49,7 +51,7 @@ public class EquipmentService {
     public Equipment updateStatus(int id, boolean isOperational) {
         // Vi finder først udstyret i databasen
         Equipment equipment = equipmentRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Equipment not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Equipment not found with id: " + id));
 
         // Vi ændrer status og gemmer igen
         equipment.setOperational(isOperational);
@@ -73,18 +75,18 @@ public class EquipmentService {
     public void updateEquipmentStatus(int activityId, int equipmentId, boolean newStatus, Profile user) {
         // 1. Sikkerhedstjek: Kun rollen 'Service' må gøre udstyr "OK" igen (re-aktivere)
         if (newStatus && user.getRole() != Role.Service) {
-            throw new RuntimeException("Adgang nægtet: Kun Service-medarbejdere må godkende defekt udstyr.");
+            throw new UnauthorizedException("Adgang nægtet: Kun Service-medarbejdere må godkende defekt udstyr.");
         }
 
         // 2. Find aktiviteten (vi bruger activityRepository her)
         Activity activity = activityRepository.findById(activityId)
-                .orElseThrow(() -> new RuntimeException("Aktivitet ikke fundet"));
+                .orElseThrow(() -> new ResourceNotFoundException("Aktivitet ikke fundet"));
 
         // 3. Find det specifikke stykke udstyr i aktivitetens liste
         Equipment equipment = activity.getEquipments().stream()
                 .filter(e -> e.getId() == equipmentId)
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("Udstyret blev ikke fundet under denne aktivitet"));
+                .orElseThrow(() -> new ResourceNotFoundException("Udstyret blev ikke fundet under denne aktivitet"));
 
         // 4. Opdater status
         equipment.setOperational(newStatus);

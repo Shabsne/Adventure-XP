@@ -1,5 +1,8 @@
 package com.adventurexp.service;
 
+import com.adventurexp.exceptions.BusinessLogicException;
+import com.adventurexp.exceptions.ResourceNotFoundException;
+import com.adventurexp.exceptions.ValidationException;
 import com.adventurexp.model.Booking;
 import com.adventurexp.model.BookingStatus;
 import com.adventurexp.model.Profile;
@@ -41,7 +44,7 @@ public class BookingService {
         );
 
         if (!hasCapacity) {
-            throw new IllegalArgumentException(
+            throw new BusinessLogicException(
                 "Ikke nok operationelt udstyr eller for mange deltagere til denne aktivitet"
             );
         }
@@ -59,23 +62,23 @@ public class BookingService {
         Profile profile = booking.getProfile();
 
         if (activity == null || profile == null) {
-            throw new IllegalArgumentException("Booking skal have både en aktivitet og en profil.");
+            throw new ValidationException("Booking skal have både en aktivitet og en profil.");
         }
 
         int customerAge = calculateAge(profile.getBirthDate());
 
         if (customerAge < activity.getMinAge()) {
-            throw new IllegalArgumentException("For ung til denne aktivitet. Minimum: " + activity.getMinAge());
+            throw new ValidationException("For ung til denne aktivitet. Minimum: " + activity.getMinAge());
         }
 
         if (customerAge > activity.getMaxAge()) {
-            throw new IllegalArgumentException("For gammel til denne aktivitet. Maksimumsalder: " + activity.getMaxAge());
+            throw new ValidationException("For gammel til denne aktivitet. Maksimumsalder: " + activity.getMaxAge());
         }
     }
 
     private int calculateAge(LocalDate birthDate) {
         if (birthDate == null) {
-            throw new IllegalArgumentException("Fødselsdato må ikke være null!");
+            throw new ValidationException("Fødselsdato må ikke være null!");
         }
         return Period.between(birthDate, LocalDate.now()).getYears();
     }
@@ -98,11 +101,11 @@ public class BookingService {
     // ISSUE #88
     public Booking updateBookingStatus(int bookingId, BookingStatus status) {
         Booking booking = bookingRepository.findById(bookingId)
-                .orElseThrow(() -> new IllegalArgumentException("Booking ikke fundet med id: " + bookingId));
+                .orElseThrow(() -> new ResourceNotFoundException("Booking ikke fundet med id: " + bookingId));
 
         if (booking.getStatus() == BookingStatus.CANCELLED ||
             booking.getStatus() == BookingStatus.NO_SHOW) {
-            throw new IllegalArgumentException("Kan ikke ændre status på en aflyst booking.");
+            throw new BusinessLogicException("Kan ikke ændre status på en aflyst booking.");
         }
 
         booking.setStatus(status);
