@@ -46,4 +46,15 @@ public class ProfileController {
     public Profile getCurrentUser(HttpSession session) {
         return (Profile) session.getAttribute("user");
     }
+
+    @PostMapping("register")
+    public ResponseEntity<String> register(@RequestBody Profile profile) {
+        if (profileService.existsByMail(profile.getMail())) {
+            return ResponseEntity.status(409).body("Email er allerede i brug");
+        }
+
+        profileService.save(profile);
+
+        return ResponseEntity.ok("Bruger oprettet");
+    }
 }

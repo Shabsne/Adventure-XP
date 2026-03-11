@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc4557db-d213-4a35-904e-ef3ed251a281" name="Changes" comment="Rettede getReadyEquipmentCount da den kørte dobbelt null-tjek">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adventurexp/config/DataInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adventurexp/config/DataInit.java" afterDir="false" />
+    <list default="true" id="fc4557db-d213-4a35-904e-ef3ed251a281" name="Changes" comment="Added Login">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/register.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adventurexp/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adventurexp/controller/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adventurexp/controller/ViewController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adventurexp/repository/ProfileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adventurexp/repository/ProfileRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adventurexp/service/ProfileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adventurexp/service/ProfileService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +23,8 @@
         <option value="Class" />
         <option value="Interface" />
         <option value="Dockerfile" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -70,6 +72,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
@@ -148,7 +151,15 @@
       <option name="project" value="LOCAL" />
       <updated>1773133757775</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added Login">
+      <option name="closed" value="true" />
+      <created>1773186830882</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1773186830882</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,6 +169,7 @@
     <MESSAGE value="Activity has been added throughout the layers" />
     <MESSAGE value="Unversioned files commit" />
     <MESSAGE value="Rettede getReadyEquipmentCount da den kørte dobbelt null-tjek" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rettede getReadyEquipmentCount da den kørte dobbelt null-tjek" />
+    <MESSAGE value="Added Login" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Login" />
   </component>
 </project>

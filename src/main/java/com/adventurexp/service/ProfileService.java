@@ -30,4 +30,12 @@ public class ProfileService {
         return profileRepository.findById(id).orElse(null);
     }
 
+    public void save(Profile profile) {
+        profileRepository.save(profile);
+    }
+
+    public boolean existsByMail(String mail) {
+        return profileRepository.existsByMail(mail);
+    }
+
 }
