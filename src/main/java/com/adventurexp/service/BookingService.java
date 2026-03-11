@@ -44,7 +44,7 @@ public class BookingService {
         );
 
         if (!hasCapacity) {
-            throw new IllegalArgumentException(
+            throw new BusinessLogicException(
                 "Ikke nok operationelt udstyr eller for mange deltagere til denne aktivitet"
             );
         }
