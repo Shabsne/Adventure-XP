@@ -1,6 +1,7 @@
 package com.adventurexp.service;
 
 import com.adventurexp.exceptions.BusinessLogicException;
+import com.adventurexp.exceptions.ResourceNotFoundException;
 import com.adventurexp.model.*;
 import com.adventurexp.repository.BookingRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -145,4 +146,118 @@ public class BookingServiceTest {
 
         verify(bookingRepository, never()).save(any());
     }
+
+    @Test
+    void createExclusiveBooking_throwsException_whenAlreadyExclusivelyBooked() {
+        Booking existingExclusive = new Booking();
+        existingExclusive.setId(5);
+        existingExclusive.setActivity(activity);
+        existingExclusive.setStartTime(startTime);
+        existingExclusive.setEndTime(endTime);
+        existingExclusive.setStatus(BookingStatus.ACTIVE);
+        existingExclusive.setExclusive(true);
+        existingExclusive.setGroupName("Første Gruppe");
+
+        when(bookingRepository.findAll()).thenReturn(List.of(existingExclusive));
+
+        Booking newBooking = new Booking();
+        newBooking.setActivity(activity);
+        newBooking.setStartTime(startTime);
+        newBooking.setEndTime(endTime);
+
+        assertThrows(BusinessLogicException.class, () -> bookingService.createExclusiveBooking(newBooking, "Anden Gruppe"));
+    }
+
+    @Test
+    void isActivityBookedExclusively_returnsTrue_whenOverlapping() {
+        Booking exclusiveBooking = new Booking();
+        exclusiveBooking.setActivity(activity);
+        exclusiveBooking.setStartTime(startTime.minusMinutes(30));
+        exclusiveBooking.setEndTime(endTime.plusMinutes(30));
+        exclusiveBooking.setStatus(BookingStatus.ACTIVE);
+        exclusiveBooking.setExclusive(true);
+        exclusiveBooking.setGroupName("Gruppe 1");
+
+        when(bookingRepository.findAll()).thenReturn(List.of(exclusiveBooking));
+
+        boolean result = bookingService.isActivityBookedExclusively(1, startTime, endTime);
+
+        assertTrue(result);
+    }
+
+    @Test
+    void isActivityBookedExclusively_returnsFalse_whenNoOverlap() {
+        Booking otherBooking = new Booking();
+        otherBooking.setActivity(activity);
+        otherBooking.setStartTime(startTime.plusDays(5));
+        otherBooking.setEndTime(endTime.plusDays(5));
+        otherBooking.setStatus(BookingStatus.ACTIVE);
+        otherBooking.setExclusive(true);
+
+        when(bookingRepository.findAll()).thenReturn(List.of(otherBooking));
+
+        boolean result = bookingService.isActivityBookedExclusively(1, startTime, endTime);
+
+        assertFalse(result);
+    }
+
+    @Test
+    void updateBookingStatus_toCompleted_whenActive() {
+        when(bookingRepository.findById(1)).thenReturn(Optional.of(activeBooking));
+        when(bookingRepository.save(any(Booking.class))).thenAnswer(i -> i.getArgument(0));
+
+        Booking result = bookingService.updateBookingStatus(1, BookingStatus.COMPLETED);
+
+        assertEquals(BookingStatus.COMPLETED, result.getStatus());
+        verify(bookingRepository, times(1)).save(activeBooking);
+    }
+
+    @Test
+    void updateBookingStatus_toNoShow_whenActive() {
+        when(bookingRepository.findById(1)).thenReturn(Optional.of(activeBooking));
+        when(bookingRepository.save(any(Booking.class))).thenAnswer(i -> i.getArgument(0));
+
+        Booking result = bookingService.updateBookingStatus(1, BookingStatus.NO_SHOW);
+
+        assertEquals(BookingStatus.NO_SHOW, result.getStatus());
+    }
+
+    @Test
+    void updateBookingStatus_throwsException_whenAlreadyCancelled() {
+        activeBooking.setStatus(BookingStatus.CANCELLED);
+        when(bookingRepository.findById(1)).thenReturn(Optional.of(activeBooking));
+
+        assertThrows(
+                BusinessLogicException.class,
+                () -> bookingService.updateBookingStatus(1, BookingStatus.COMPLETED)
+        );
+
+        verify(bookingRepository, never()).save(any());
+    }
+
+    @Test
+    void updateBookingStatus_throwsException_whenAlreadyNoShow() {
+        activeBooking.setStatus(BookingStatus.NO_SHOW);
+        when(bookingRepository.findById(1)).thenReturn(Optional.of(activeBooking));
+
+        assertThrows(BusinessLogicException.class, () -> bookingService.updateBookingStatus(1, BookingStatus.COMPLETED));
+    }
+
+    @Test
+    void updateBookingStatus_throwsResourceNotFoundException_whenBookingNotFound() {
+        when(bookingRepository.findById(999)).thenReturn(Optional.empty());
+
+        assertThrows(
+                ResourceNotFoundException.class,
+                () -> bookingService.updateBookingStatus(999, BookingStatus.COMPLETED)
+        );
+    }
+
+    @Test
+    void deleteBooking_callsDeleteByIdOnce() {
+        bookingService.deleteBooking(1);
+
+        verify(bookingRepository, times(1)).deleteById(1);
+    }
+
 }
