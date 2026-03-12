@@ -101,6 +101,10 @@ public class BookingService {
         return bookingRepository.save(booking);
     }
 
+    public void deleteBooking(int id) {
+        bookingRepository.deleteById(id);
+    }
+
     //ISSUE #91
     private void validateAgeRequirements(Booking booking) {
         Activity activity = booking.getActivity();
