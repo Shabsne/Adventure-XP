@@ -22,6 +22,10 @@ public class Booking {
     private LocalDateTime endTime;
     private BookingStatus status;
 
+    // Gruppe- og firmabooking
+    private boolean isExclusive;
+    private String groupName;
+
     public Booking() {
 
     }
@@ -88,6 +92,22 @@ public class Booking {
 
     public void setStatus(BookingStatus status) {
         this.status = status;
+    }
+
+    public boolean isExclusive() {
+        return isExclusive;
+    }
+
+    public void setExclusive(boolean isExclusive) {
+        this.isExclusive = isExclusive;
+    }
+
+    public String getGroupName() {
+        return groupName;
+    }
+
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
     }
 
     @Override
