@@ -63,7 +63,7 @@ public class BookingController {
     public ResponseEntity<String> deleteBooking(@PathVariable int id) {
         try {
             bookingService.deleteBooking(id);
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.ok("Booking slettet");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Fejl ved sletning");
         }
