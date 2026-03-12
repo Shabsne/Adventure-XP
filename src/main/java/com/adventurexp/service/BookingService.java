@@ -34,21 +34,70 @@ public class BookingService {
         return bookingRepository.findById(id);
     }
 
-    public Booking saveBooking(Booking booking) {
-        validateAgeRequirements(booking);
+    public Booking findExclusiveBookingInTimeRange(int activityId, LocalDateTime startTime, LocalDateTime endTime) {
+        List<Booking> bookings = bookingRepository.findAll();
 
-        //Tjek om der er nok udstyr og kapacitet
-        boolean hasCapacity = activityService.checkCapacity(
-                booking.getActivity().getId(),
-                booking.getParticipants()
-        );
+        for (Booking booking : bookings) {
+            //Tjek om det er samme aktivitet
+            if (booking.getActivity().getId() != activityId ||
+            !booking.isExclusive() ||
+            booking.getStatus() != BookingStatus.ACTIVE) {
+                continue;
+            }
 
-        if (!hasCapacity) {
-            throw new BusinessLogicException(
-                "Ikke nok operationelt udstyr eller for mange deltagere til denne aktivitet"
-            );
+            if (booking.getStartTime().isBefore(endTime) && booking.getEndTime().isAfter(startTime)) {
+                return booking;
+            }
         }
 
+        return null; // Ingen eksklusiv booking fundet
+    }
+
+    // Tjek om aktiviteten er eksklusivt booket
+    public boolean isActivityBookedExclusively(int activityId, LocalDateTime startTime, LocalDateTime endTime) {
+        return findExclusiveBookingInTimeRange(activityId, startTime, endTime) != null;
+    }
+
+    public String findExclusiveGroupName(int activityId, LocalDateTime startTime, LocalDateTime endTime) {
+        Booking exclusiveBooking = findExclusiveBookingInTimeRange(activityId, startTime, endTime);
+        return exclusiveBooking != null ? exclusiveBooking.getGroupName() : null;
+    }
+
+    // Opret en normal booking, men tjek først om der er eksklusiv booking
+    public Booking createNormalBooking(Booking booking) {
+        Activity activity = booking.getActivity();
+
+        // Tjek om aktivitet er booket eksklusivt
+        if (isActivityBookedExclusively(activity.getId(), booking.getStartTime(), booking.getEndTime())) {
+            String groupName = findExclusiveGroupName(activity.getId(), booking.getStartTime(), booking.getEndTime());
+            throw new BusinessLogicException("Aktiviteten er eksklusivt booket af " + groupName + " i dette tidsrum.");
+        }
+        booking.setExclusive(false);
+
+        // Tjek om der er nok udstyr og kapacitet
+        boolean hasCapacity = activityService.checkCapacity(booking.getActivity().getId(), booking.getParticipants());
+
+        if (!hasCapacity) {
+            throw new BusinessLogicException("Ikke nok operationelt udstyr eller for mange bookings på denne aktivitet i dette tidsrum.");
+        }
+
+        booking.setStatus(BookingStatus.ACTIVE);
+        return bookingRepository.save(booking);
+    }
+
+    // Opret en eksklusiv booking
+    public Booking createExclusiveBooking(Booking booking, String groupName) {
+        Activity activity = booking.getActivity();
+
+        // Tjek hvis der allerede er eksklusiv booking i det tidsrum
+        if (isActivityBookedExclusively(activity.getId(), booking.getStartTime(), booking.getEndTime())) {
+            String groupName2 = findExclusiveGroupName(activity.getId(), booking.getStartTime(), booking.getEndTime());
+            throw new BusinessLogicException("Aktiviteten er eksklusivt booket af " + groupName2 + " i dette tidsrum.");
+        }
+
+        booking.setExclusive(true);
+        booking.setGroupName(groupName);
+        booking.setStatus(BookingStatus.ACTIVE);
         return bookingRepository.save(booking);
     }
 
