@@ -4,31 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc4557db-d213-4a35-904e-ef3ed251a281" name="Changes" comment="Added create user">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/adventurexp/service/ProfileServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/adventurexp/service/controller/ProfileControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/application-test.properties" afterDir="false" />
+    <list default="true" id="fc4557db-d213-4a35-904e-ef3ed251a281" name="Changes" comment="Added Profile tests">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adventurexp/DTO/CreateUserRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adventurexp/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adventurexp/controller/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/config/DataInit.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/config/DataInit.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/controller/ActivityController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/controller/ActivityController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/controller/BookingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/controller/BookingController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/controller/ProfileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/controller/ProfileController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/model/Activity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/model/Activity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/model/Booking.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/model/Booking.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/model/Equipment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/model/Equipment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/repository/ActivityRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/repository/ActivityRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/repository/BookingRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/repository/BookingRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/repository/ProfileRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/repository/ProfileRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/service/ActivityService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/service/ActivityService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/service/BookingService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/service/BookingService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/service/EquipmentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/service/EquipmentService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adventurexp/service/ProfileService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adventurexp/service/ProfileService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/Profile.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/equipment.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/templates/Login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/templates/equipment.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/adventurexp/service/EquipmentServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/adventurexp/service/EquipmentServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adventurexp/service/ProfileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adventurexp/service/ProfileService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/register.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,7 +222,7 @@
       <updated>1773044764362</updated>
       <workItem from="1773044765502" duration="2946000" />
       <workItem from="1773047725224" duration="2030000" />
-      <workItem from="1773346299854" duration="730000" />
+      <workItem from="1773346299854" duration="8990000" />
     </task>
     <task id="LOCAL-00001" summary="Activity has been added throughout the layers">
       <option name="closed" value="true" />
@@ -282,7 +264,15 @@
       <option name="project" value="LOCAL" />
       <updated>1773265724625</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added Profile tests">
+      <option name="closed" value="true" />
+      <created>1773399796153</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1773399796153</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,6 +284,7 @@
     <MESSAGE value="Rettede getReadyEquipmentCount da den kørte dobbelt null-tjek" />
     <MESSAGE value="Added Login" />
     <MESSAGE value="Added create user" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added create user" />
+    <MESSAGE value="Added Profile tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Profile tests" />
   </component>
 </project>

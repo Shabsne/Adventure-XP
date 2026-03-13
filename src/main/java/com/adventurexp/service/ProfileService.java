@@ -1,9 +1,12 @@
 package com.adventurexp.service;
 
 import com.adventurexp.model.Profile;
+import com.adventurexp.model.Role;
 import com.adventurexp.repository.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 
 @Service
 public class ProfileService {
@@ -36,6 +39,12 @@ public class ProfileService {
 
     public boolean existsByMail(String mail) {
         return profileRepository.existsByMail(mail);
+    }
+
+    public void createUser(String name, String mail, String password, LocalDate birthDate, Role role) {
+        Profile profile = new Profile(name, role, birthDate, mail, password);
+
+        profileRepository.save(profile);
     }
 
 }
