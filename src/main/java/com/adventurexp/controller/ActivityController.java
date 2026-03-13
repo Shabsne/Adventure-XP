@@ -20,7 +20,7 @@ public class ActivityController {
     private ActivityService activityService;
 
     @Autowired
-    private ProfileService profileService; // Tilføjet semikolon ;
+    private ProfileService profileService; 
     @Autowired
     private EquipmentService equipmentService;
 

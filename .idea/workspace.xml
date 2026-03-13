@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc4557db-d213-4a35-904e-ef3ed251a281" name="Changes" comment="Added Profile tests">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/adventurexp/DTO/CreateUserRequest.java" afterDir="false" />
+    <list default="true" id="fc4557db-d213-4a35-904e-ef3ed251a281" name="Changes" comment="Added some frontend for activity and fixed static folder&#10;&#10;Added constructor in equiment and activity">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adventurexp/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adventurexp/controller/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adventurexp/service/ProfileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adventurexp/service/ProfileService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/register.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,11 +15,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Class" />
         <option value="Interface" />
         <option value="Dockerfile" />
-        <option value="HTML File" />
-        <option value="JavaScript File" />
-        <option value="Class" />
       </list>
     </option>
   </component>
@@ -45,22 +38,22 @@
     &quot;assignee&quot;: &quot;Isak1525&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:Shabsne/Adventure-XP.git",
-    "accountId": "54c3f7a5-97fd-4592-a371-dbfc6cd916dd"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Shabsne/Adventure-XP.git&quot;,
+    &quot;accountId&quot;: &quot;2ab92087-7e4a-4394-bfba-3352a5b672a6&quot;
   },
-  "recentNewPullRequestHead": {
-    "server": {
-      "useHttp": false,
-      "host": "github.com",
-      "port": null,
-      "suffix": null
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
     },
-    "owner": "Shabsne",
-    "repository": "Adventure-XP"
+    &quot;owner&quot;: &quot;Shabsne&quot;,
+    &quot;repository&quot;: &quot;Adventure-XP&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -72,110 +65,18 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "JUnit.ProfileControllerTest.executor": "Run",
-    "JUnit.ProfileControllerTest.registerDuplicateEmail.executor": "Run",
-    "JUnit.ProfileControllerTest.registerUser.executor": "Run",
-    "JUnit.ProfileServiceTest.testLoginFail.executor": "Run",
-    "JUnit.ProfileServiceTest.testRegisterUser.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "Profile-Login",
+    "git-widget-placeholder": "feature/activity-dashboard",
     "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.ProfileControllerTest">
-    <configuration name="ProfileControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="adventure-xp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.adventurexp.service.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.adventurexp.service.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.adventurexp.service.controller.ProfileControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProfileControllerTest.registerDuplicateEmail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="adventure-xp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="controller" />
-      <option name="MAIN_CLASS_NAME" value="controller.ProfileControllerTest" />
-      <option name="METHOD_NAME" value="registerDuplicateEmail" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProfileControllerTest.registerUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="adventure-xp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="controller" />
-      <option name="MAIN_CLASS_NAME" value="controller.ProfileControllerTest" />
-      <option name="METHOD_NAME" value="registerUser" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProfileServiceTest.testLoginFail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="adventure-xp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.adventurexp.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.adventurexp.service" />
-      <option name="MAIN_CLASS_NAME" value="com.adventurexp.service.ProfileServiceTest" />
-      <option name="METHOD_NAME" value="testLoginFail" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProfileServiceTest.testRegisterUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="adventure-xp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.adventurexp.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.adventurexp.service" />
-      <option name="MAIN_CLASS_NAME" value="com.adventurexp.service.ProfileServiceTest" />
-      <option name="METHOD_NAME" value="testRegisterUser" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Adventure-XP" />
       <method v="2">
@@ -195,15 +96,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.ProfileControllerTest" />
-        <item itemvalue="JUnit.ProfileControllerTest.registerDuplicateEmail" />
-        <item itemvalue="JUnit.ProfileControllerTest.registerUser" />
-        <item itemvalue="JUnit.ProfileServiceTest.testRegisterUser" />
-        <item itemvalue="JUnit.ProfileServiceTest.testLoginFail" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -222,7 +114,6 @@
       <updated>1773044764362</updated>
       <workItem from="1773044765502" duration="2946000" />
       <workItem from="1773047725224" duration="2030000" />
-      <workItem from="1773346299854" duration="8990000" />
     </task>
     <task id="LOCAL-00001" summary="Activity has been added throughout the layers">
       <option name="closed" value="true" />
@@ -248,31 +139,15 @@
       <option name="project" value="LOCAL" />
       <updated>1773133757775</updated>
     </task>
-    <task id="LOCAL-00004" summary="Added Login">
+    <task id="LOCAL-00004" summary="Added some frontend for activity and fixed static folder&#10;&#10;Added constructor in equiment and activity">
       <option name="closed" value="true" />
-      <created>1773186830882</created>
+      <created>1773136467873</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1773186830882</updated>
+      <updated>1773136467873</updated>
     </task>
-    <task id="LOCAL-00005" summary="Added create user">
-      <option name="closed" value="true" />
-      <created>1773265724625</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1773265724625</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Added Profile tests">
-      <option name="closed" value="true" />
-      <created>1773399796153</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1773399796153</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,9 +157,7 @@
     <MESSAGE value="Activity has been added throughout the layers" />
     <MESSAGE value="Unversioned files commit" />
     <MESSAGE value="Rettede getReadyEquipmentCount da den kørte dobbelt null-tjek" />
-    <MESSAGE value="Added Login" />
-    <MESSAGE value="Added create user" />
-    <MESSAGE value="Added Profile tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Profile tests" />
+    <MESSAGE value="Added some frontend for activity and fixed static folder&#10;&#10;Added constructor in equiment and activity" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some frontend for activity and fixed static folder&#10;&#10;Added constructor in equiment and activity" />
   </component>
 </project>

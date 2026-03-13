@@ -1,5 +1,8 @@
 package com.adventurexp.service;
 
+import com.adventurexp.exceptions.BusinessLogicException;
+import com.adventurexp.exceptions.ResourceNotFoundException;
+import com.adventurexp.exceptions.ValidationException;
 import com.adventurexp.model.Booking;
 import com.adventurexp.model.BookingStatus;
 import com.adventurexp.model.Profile;
@@ -31,21 +34,70 @@ public class BookingService {
         return bookingRepository.findById(id);
     }
 
-    public Booking saveBooking(Booking booking) {
-        validateAgeRequirements(booking);
+    public Booking findExclusiveBookingInTimeRange(int activityId, LocalDateTime startTime, LocalDateTime endTime) {
+        List<Booking> bookings = bookingRepository.findAll();
 
-        //Tjek om der er nok udstyr og kapacitet
-        boolean hasCapacity = activityService.checkCapacity(
-                booking.getActivity().getId(),
-                booking.getParticipants()
-        );
+        for (Booking booking : bookings) {
+            //Tjek om det er samme aktivitet
+            if (booking.getActivity().getId() != activityId ||
+            !booking.isExclusive() ||
+            booking.getStatus() != BookingStatus.ACTIVE) {
+                continue;
+            }
 
-        if (!hasCapacity) {
-            throw new IllegalArgumentException(
-                "Ikke nok operationelt udstyr eller for mange deltagere til denne aktivitet"
-            );
+            if (booking.getStartTime().isBefore(endTime) && booking.getEndTime().isAfter(startTime)) {
+                return booking;
+            }
         }
 
+        return null; // Ingen eksklusiv booking fundet
+    }
+
+    // Tjek om aktiviteten er eksklusivt booket
+    public boolean isActivityBookedExclusively(int activityId, LocalDateTime startTime, LocalDateTime endTime) {
+        return findExclusiveBookingInTimeRange(activityId, startTime, endTime) != null;
+    }
+
+    public String findExclusiveGroupName(int activityId, LocalDateTime startTime, LocalDateTime endTime) {
+        Booking exclusiveBooking = findExclusiveBookingInTimeRange(activityId, startTime, endTime);
+        return exclusiveBooking != null ? exclusiveBooking.getGroupName() : null;
+    }
+
+    // Opret en normal booking, men tjek først om der er eksklusiv booking
+    public Booking createNormalBooking(Booking booking) {
+        Activity activity = booking.getActivity();
+
+        // Tjek om aktivitet er booket eksklusivt
+        if (isActivityBookedExclusively(activity.getId(), booking.getStartTime(), booking.getEndTime())) {
+            String groupName = findExclusiveGroupName(activity.getId(), booking.getStartTime(), booking.getEndTime());
+            throw new BusinessLogicException("Aktiviteten er eksklusivt booket af " + groupName + " i dette tidsrum.");
+        }
+        booking.setExclusive(false);
+
+        // Tjek om der er nok udstyr og kapacitet
+        boolean hasCapacity = activityService.checkCapacity(booking.getActivity().getId(), booking.getParticipants());
+
+        if (!hasCapacity) {
+            throw new BusinessLogicException("Ikke nok operationelt udstyr eller for mange bookings på denne aktivitet i dette tidsrum.");
+        }
+
+        booking.setStatus(BookingStatus.ACTIVE);
+        return bookingRepository.save(booking);
+    }
+
+    // Opret en eksklusiv booking
+    public Booking createExclusiveBooking(Booking booking, String groupName) {
+        Activity activity = booking.getActivity();
+
+        // Tjek hvis der allerede er eksklusiv booking i det tidsrum
+        if (isActivityBookedExclusively(activity.getId(), booking.getStartTime(), booking.getEndTime())) {
+            String groupName2 = findExclusiveGroupName(activity.getId(), booking.getStartTime(), booking.getEndTime());
+            throw new BusinessLogicException("Aktiviteten er eksklusivt booket af " + groupName2 + " i dette tidsrum.");
+        }
+
+        booking.setExclusive(true);
+        booking.setGroupName(groupName);
+        booking.setStatus(BookingStatus.ACTIVE);
         return bookingRepository.save(booking);
     }
 
@@ -59,23 +111,23 @@ public class BookingService {
         Profile profile = booking.getProfile();
 
         if (activity == null || profile == null) {
-            throw new IllegalArgumentException("Booking skal have både en aktivitet og en profil.");
+            throw new ValidationException("Booking skal have både en aktivitet og en profil.");
         }
 
         int customerAge = calculateAge(profile.getBirthDate());
 
         if (customerAge < activity.getMinAge()) {
-            throw new IllegalArgumentException("For ung til denne aktivitet. Minimum: " + activity.getMinAge());
+            throw new ValidationException("For ung til denne aktivitet. Minimum: " + activity.getMinAge());
         }
 
         if (customerAge > activity.getMaxAge()) {
-            throw new IllegalArgumentException("For gammel til denne aktivitet. Maksimumsalder: " + activity.getMaxAge());
+            throw new ValidationException("For gammel til denne aktivitet. Maksimumsalder: " + activity.getMaxAge());
         }
     }
 
     private int calculateAge(LocalDate birthDate) {
         if (birthDate == null) {
-            throw new IllegalArgumentException("Fødselsdato må ikke være null!");
+            throw new ValidationException("Fødselsdato må ikke være null!");
         }
         return Period.between(birthDate, LocalDate.now()).getYears();
     }
@@ -98,11 +150,11 @@ public class BookingService {
     // ISSUE #88
     public Booking updateBookingStatus(int bookingId, BookingStatus status) {
         Booking booking = bookingRepository.findById(bookingId)
-                .orElseThrow(() -> new IllegalArgumentException("Booking ikke fundet med id: " + bookingId));
+                .orElseThrow(() -> new ResourceNotFoundException("Booking ikke fundet med id: " + bookingId));
 
         if (booking.getStatus() == BookingStatus.CANCELLED ||
             booking.getStatus() == BookingStatus.NO_SHOW) {
-            throw new IllegalArgumentException("Kan ikke ændre status på en aflyst booking.");
+            throw new BusinessLogicException("Kan ikke ændre status på en aflyst booking.");
         }
 
         booking.setStatus(status);

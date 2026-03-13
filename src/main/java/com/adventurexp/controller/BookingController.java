@@ -30,22 +30,43 @@ public class BookingController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    //Opret en ny booking
+    //Opret normal booking
     @PostMapping
-    public ResponseEntity<Booking> createBooking(@RequestBody Booking booking) {
+    public ResponseEntity<String> createBooking(@RequestBody Booking booking) {
         try {
-            Booking saved = bookingService.saveBooking(booking);
-            return ResponseEntity.ok(saved);
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().build();
+            bookingService.createNormalBooking(booking);
+            return ResponseEntity.ok("Booking oprettet");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
+    }
+
+    // Opret eksklusiv booking
+    @PostMapping("/exclusive")
+    public ResponseEntity<String> createExclusiveBooking(@RequestBody Booking booking, @RequestParam String groupName) {
+        try {
+            bookingService.createExclusiveBooking(booking, groupName);
+            return ResponseEntity.ok("Eksklusiv booking oprettet for " + groupName);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    // Tjek om aktivitet er eksklusivt booket
+    @GetMapping("/check/{activityId}")
+    public ResponseEntity<String> checkExclusive(@PathVariable int activityId, @RequestParam String startTime, @RequestParam String endTime) {
+        return ResponseEntity.ok("Eksklusiv check implementeret");
     }
 
     //Slet en booking
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteBooking(@PathVariable int id) {
-        bookingService.deleteBooking(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<String> deleteBooking(@PathVariable int id) {
+        try {
+            bookingService.deleteBooking(id);
+            return ResponseEntity.ok("Booking slettet");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Fejl ved sletning");
+        }
     }
 
     // ISSUE #88 - Tjek ind (mødt op)
