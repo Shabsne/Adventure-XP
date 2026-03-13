@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<h2>Opret bruger</h2>
+
+<form onsubmit="register(event)">
+
+  <label>Navn</label>
+  <input type="text" id="name">
+
+  <label>Email</label>
+  <input type="text" id="mail">
+
+  <label>Password</label>
+  <input type="password" id="password">
+
+  <label>Fødselsdato</label>
+  <input type="date" id="birthDate">
+
+  <button type="submit">Opret</button>
+
+</form>
+
+<p id="message" style="color:red"></p>
+
+<script src="register.js"></script>
+
+</body>
+</html>

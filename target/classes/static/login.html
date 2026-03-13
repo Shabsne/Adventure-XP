@@ -2,12 +2,14 @@
 <html>
 <head>
     <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 
 <h2>Login</h2>
 
-<form id="loginForm">
+<form onsubmit="login(event)">
 
     <label>Email</label>
     <input type="text" id="mail">
@@ -17,11 +19,13 @@
 
     <button onclick="login()">Login</button>
 
+    <a href="/register.html">Opret bruger</a>
+
 </form>
 
 <p id="error"></p>
 
-<script src="Profile.js"></script>
+<script src="profile.js"></script>
 
 </body>
 </html>
