@@ -55,9 +55,24 @@ document.addEventListener('DOMContentLoaded', async () => {
         const res = await fetch('/me');
         if (res.ok) {
             currentProfile = await res.json();
+            if (!currentProfile) {
+                window.location.href = '/login.html';
+                return;
+            }
+            // Sæt initialer i header-avataren
+            if (currentProfile?.name) {
+                const initials = currentProfile.name
+                    .split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
+                const avatar = document.getElementById('header-avatar');
+                if (avatar) avatar.textContent = initials;
+            }
+        } else {
+            window.location.href = '/login.html';
+            return;
         }
     } catch (e) {
-        // Ingen session — currentProfile forbliver null
+        window.location.href = '/login.html';
+        return;
     }
 
     fetchActivities();
