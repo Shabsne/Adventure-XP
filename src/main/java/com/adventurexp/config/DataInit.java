@@ -2,11 +2,16 @@ package com.adventurexp.config;
 
 import com.adventurexp.model.Activity;
 import com.adventurexp.model.Equipment;
+import com.adventurexp.model.Profile;
+import com.adventurexp.model.Role;
 import com.adventurexp.repository.ActivityRepository;
 import com.adventurexp.repository.EquipmentRepository;
+import com.adventurexp.repository.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
 
 @Component
 public class DataInit implements CommandLineRunner {
@@ -16,6 +21,9 @@ public class DataInit implements CommandLineRunner {
 
     @Autowired
     private EquipmentRepository equipmentRepository;
+
+    @Autowired
+    private ProfileRepository profileRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -58,6 +66,40 @@ public class DataInit implements CommandLineRunner {
             equipmentRepository.save(new Equipment("Sumo Dragter", "To store dragter inkl. måtter", true, sumo));
 
             System.out.println("AdventureXP data er indlæst succesfuldt!");
+        }
+
+
+        if (profileRepository.count() == 0) {
+
+            Profile admin = new Profile(
+                    "Admin",
+                    Role.Admin,
+                    LocalDate.of(1990, 5, 10),
+                    "admin@adventurexp.dk",
+                    "1234"
+            );
+
+            Profile employee = new Profile(
+                    "Emma Employee",
+                    Role.Employee,
+                    LocalDate.of(1998, 3, 22),
+                    "employee@adventurexp.dk",
+                    "1234"
+            );
+
+            Profile user = new Profile(
+                    "Peter User",
+                    Role.Custommer,
+                    LocalDate.of(2000, 7, 15),
+                    "user@adventurexp.dk",
+                    "1234"
+            );
+
+            profileRepository.save(admin);
+            profileRepository.save(employee);
+            profileRepository.save(user);
+
+            System.out.println("Profiles oprettet!");
         }
     }
 }

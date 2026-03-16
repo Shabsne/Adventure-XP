@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface ProfileRepository extends JpaRepository<Profile, Integer> {
 
     Profile findByMail(String mail);
+
+    boolean existsByMail(String mail);
 }
