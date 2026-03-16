@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc4557db-d213-4a35-904e-ef3ed251a281" name="Changes" comment="Updated logIn">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/adventurexp/service/ProfileServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/adventurexp/service/ProfileServiceTest.java" afterDir="false" />
+    <list default="true" id="fc4557db-d213-4a35-904e-ef3ed251a281" name="Changes" comment="Updated Login">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +19,7 @@
         <option value="Class" />
         <option value="Interface" />
         <option value="Dockerfile" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -28,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="Profile-Login" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -72,7 +73,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "Spring Boot.AdventureXpApplication.executor": "Run",
-    "git-widget-placeholder": "Profile-Login",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
@@ -157,7 +158,15 @@
       <option name="project" value="LOCAL" />
       <updated>1773651628165</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Updated Login">
+      <option name="closed" value="true" />
+      <created>1773653726796</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1773653726796</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,6 +179,7 @@
     <MESSAGE value="Added some frontend for activity and fixed static folder&#10;&#10;Added constructor in equiment and activity" />
     <MESSAGE value="Merge branch 'main' into Profile-Login&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/resources/static/login.html&#10;#&#9;src/main/resources/static/profile.js&#10;#&#9;target/classes/com/adventurexp/config/DataInit.class&#10;#&#9;target/classes/com/adventurexp/controller/ProfileController.class&#10;#&#9;target/classes/com/adventurexp/service/BookingService.class&#10;#&#9;target/classes/com/adventurexp/service/EquipmentService.class&#10;#&#9;target/classes/com/adventurexp/service/ProfileService.class&#10;#&#9;target/classes/static/equipment.html&#10;#&#9;target/classes/static/equipment.js" />
     <MESSAGE value="Updated logIn" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated logIn" />
+    <MESSAGE value="Updated Login" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Login" />
   </component>
 </project>
