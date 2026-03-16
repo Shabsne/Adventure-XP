@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdventureXP | Login</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+</div>
+
+<header class="main-header">
+    <div class="header-inner">
+        <div class="logo">Adventure<span>XP</span></div>
+        <p class="tagline">Log ind for at booke oplevelser</p>
+    </div>
+</header>
+
+<main class="login-container">
+
+    <form class="login-card" onsubmit="login(event)">
+
+        <h2>Log ind</h2>
+
+        <label>Email</label>
+        <input id="mail" type="email" required>
+
+        <label>Adgangskode</label>
+        <input id="password" type="password" required>
+
+        <button type="submit" class="btn-action">Log ind</button>
+
+        <div class="login-divider">
+            <span>eller</span>
+        </div>
+
+        <a href="/register.html" class="btn-secondary">Opret bruger</a>
+
+        <p id="error" class="login-error"></p>
+
+    </form>
+
+</main>
+
+<script src="profile.js"></script>
+
+</body>
+</html>
