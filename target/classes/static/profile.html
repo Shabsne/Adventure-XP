@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdventureXP | Min Profil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+</div>
+
+<!-- HEADER -->
+<header class="main-header">
+    <div class="header-inner">
+        <a href="/dashboard" class="logo">Adventure<span>XP</span></a>
+        <p class="tagline">Min profil</p>
+    </div>
+</header>
+
+<main class="profile-wrapper">
+
+    <!-- PROFIL KORT -->
+    <div class="profile-card" id="profile-card">
+
+        <!-- VISNINGS-TILSTAND -->
+        <div id="view-mode">
+            <div class="profile-avatar" id="avatar-initials"></div>
+
+            <div class="profile-name-row">
+                <h2 id="view-name"></h2>
+                <span class="role-badge" id="view-role"></span>
+            </div>
+
+            <div class="profile-fields">
+                <div class="profile-field">
+                    <span class="field-label">E-mail</span>
+                    <span class="field-value" id="view-mail"></span>
+                </div>
+                <div class="profile-field">
+                    <span class="field-label">Fødselsdato</span>
+                    <span class="field-value" id="view-birth"></span>
+                </div>
+            </div>
+
+            <div class="profile-actions">
+                <button class="btn-edit" onclick="enterEditMode()">Rediger oplysninger</button>
+                <button class="btn-logout" onclick="logout()">Log ud</button>
+            </div>
+        </div>
+
+        <!-- REDIGERINGS-TILSTAND -->
+        <div id="edit-mode" class="hidden">
+            <h2 class="edit-title">Rediger oplysninger</h2>
+
+            <div class="form-group">
+                <label class="form-label">Navn</label>
+                <input type="text" id="edit-name" class="form-input" />
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">E-mail</label>
+                <input type="email" id="edit-mail" class="form-input" />
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Fødselsdato</label>
+                <input type="date" id="edit-birth" class="form-input" />
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Ny adgangskode <span class="field-optional">(lad stå tom for at beholde)</span></label>
+                <input type="password" id="edit-password" class="form-input" placeholder="••••••••" />
+            </div>
+
+            <div class="profile-actions">
+                <button class="btn-auth" id="save-btn" onclick="saveProfile()">Gem ændringer</button>
+                <button class="btn-cancel" onclick="exitEditMode()">Annuller</button>
+                <button class="btn-delete" onclick="openDeleteModal()">Slet min konto</button>
+            </div>
+        </div>
+
+    </div>
+
+</main>
+
+<!-- TOAST -->
+<div id="modal-overlay" class="modal-overlay hidden" onclick="closeDeleteModal()">
+    <div class="modal modal-small" onclick="event.stopPropagation()">
+        <h2 class="modal-delete-title">Slet konto</h2>
+        <p class="modal-delete-desc">Er du sikker? Dette kan ikke fortrydes og alle dine bookinger slettes.</p>
+        <div class="modal-delete-actions">
+            <button class="btn-delete-confirm" onclick="confirmDelete()">Ja, slet min konto</button>
+            <button class="btn-cancel" onclick="closeDeleteModal()">Annuller</button>
+        </div>
+    </div>
+</div>
+
+<script src="profile.js"></script>
+</body>
+</html>

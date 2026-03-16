@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdventureXP | Min Profil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+</div>
+
+<header class="main-header">
+    <div class="header-inner">
+        <a href="/dashboard" class="logo">Adventure<span>XP</span></a>
+        <p class="tagline">Min profil</p>
+    </div>
+</header>
+
+<main class="profile-wrapper">
+    <div class="profile-card" id="profile-card">
+
+        <div class="profile-avatar" id="avatar-initials"></div>
+
+        <div class="profile-name-row">
+            <h2 id="view-name"></h2>
+            <span class="role-badge" id="view-role"></span>
+        </div>
+
+        <div class="profile-fields">
+            <div class="profile-field">
+                <span class="field-label">Navn</span>
+                <span class="field-value" id="view-name-field"></span>
+            </div>
+            <div class="profile-field">
+                <span class="field-label">E-mail</span>
+                <span class="field-value" id="view-mail"></span>
+            </div>
+            <div class="profile-field">
+                <span class="field-label">Fødselsdato</span>
+                <span class="field-value" id="view-birth"></span>
+            </div>
+            <div class="profile-field">
+                <span class="field-label">Adgangskode</span>
+                <span class="field-value field-password" id="view-password">••••••••</span>
+            </div>
+            <div class="profile-field">
+                <span class="field-label">Rolle</span>
+                <span class="field-value" id="view-role-field"></span>
+            </div>
+        </div>
+
+        <div class="profile-actions">
+            <button class="btn-logout" onclick="logout()">Log ud</button>
+        </div>
+
+    </div>
+</main>
+
+<script src="profile.js"></script>
+</body>
+</html>
