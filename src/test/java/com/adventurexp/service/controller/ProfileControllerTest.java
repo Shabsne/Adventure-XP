@@ -1,8 +1,10 @@
 package com.adventurexp.service.controller;
 
+import com.adventurexp.DTO.CreateUserRequest;
 import com.adventurexp.model.Profile;
 import com.adventurexp.model.Role;
 import com.adventurexp.repository.ProfileRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.transaction.Transactional;
 
 import org.junit.jupiter.api.Test;
@@ -30,6 +32,8 @@ public class ProfileControllerTest {
 
     @Autowired
     private ProfileRepository profileRepository;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Test
     void registerUser() throws Exception {
@@ -53,7 +57,7 @@ public class ProfileControllerTest {
     @Test
     void registerDuplicateEmail() throws Exception {
 
-        Profile profile = new Profile(
+        Profile existing = new Profile(
                 "Test",
                 Role.Customer,
                 LocalDate.of(2000,1,1),
@@ -61,21 +65,18 @@ public class ProfileControllerTest {
                 "1234"
         );
 
-        profileRepository.save(profile);
+        profileRepository.save(existing);
 
-        String json = """
-    {
-      "name":"JUnit",
-      "role":"Custommer",
-      "birthDate":"2000-01-01",
-      "mail":"test@test.dk",
-      "password":"1234"
-    }
-    """;
+        CreateUserRequest request = new CreateUserRequest();
+        request.setName("JUnit");
+        request.setMail("test@test.dk");
+        request.setPassword("1234");
+        request.setBirthDate(LocalDate.of(2000,1,1));
+        request.setRole(Role.Customer);
 
         mockMvc.perform(post("/register")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(json))
+                        .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isConflict());
     }
 }

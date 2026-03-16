@@ -52,12 +52,11 @@ public class ProfileController {
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody CreateUserRequest request, HttpSession session) {
 
-        Profile currentUser = getCurrentUser(session);
-
-
         if (profileService.existsByMail(request.getMail())) {
             return ResponseEntity.status(409).body("Email er allerede i brug");
         }
+
+        Profile currentUser = getCurrentUser(session);
 
         Role role;
 
@@ -66,8 +65,6 @@ public class ProfileController {
         } else {
             role = Role.Customer;
         }
-
-
 
         profileService.createUser(request.getName(), request.getMail(), request.getPassword(), request.getBirthDate(), role);
 

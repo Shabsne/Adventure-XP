@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
+@org.springframework.context.annotation.Profile("!test")
 @Component
 public class DataInit implements CommandLineRunner {
 
