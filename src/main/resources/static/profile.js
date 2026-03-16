@@ -17,7 +17,7 @@ async function login(event) {
     });
 
     if(response.ok){
-        window.location.href = "/dashboard.html";
+        window.location.href = "/activity.html";
     } else {
         alert("Forkert login");
     }

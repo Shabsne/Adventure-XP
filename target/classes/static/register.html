@@ -1,35 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdventureXP | Opret bruger</title>
+
   <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
-<h2>Opret bruger</h2>
 
-<form onsubmit="register(event)">
+<div class="bg-orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
 
-  <label>Navn</label>
-  <input type="text" id="name">
+<header class="main-header">
+  <div class="header-inner">
+    <div class="logo">Adventure<span>XP</span></div>
+    <p class="tagline">Opret en bruger</p>
+  </div>
+</header>
 
-  <label>Email</label>
-  <input type="text" id="mail">
+<main class="login-container">
 
-  <label>Password</label>
-  <input type="password" id="password">
+  <form class="login-card" onsubmit="register(event)">
 
-  <label>Fødselsdato</label>
-  <input type="date" id="birthDate">
+    <h2>Opret bruger</h2>
 
-  <button type="submit">Opret</button>
+    <label>Navn</label>
+    <input id="name" type="text" required>
 
-</form>
+    <label>Email</label>
+    <input id="mail" type="email" required>
 
-<p id="message" style="color:red"></p>
+    <label>Adgangskode</label>
+    <input id="password" type="password" required>
 
-<script src="register.js"></script>
+    <label>Fødselsdato</label>
+    <input id="birthDate" type="date" required>
+
+    <!-- kun synlig hvis admin -->
+    <div id="role-container" style="display:none;">
+      <label>Rolle</label>
+      <select id="role"></select>
+    </div>
+
+    <button type="submit" class="btn-action">Opret bruger</button>
+
+    <p id="message" class="login-error"></p>
+
+  </form>
+
+</main>
+
+<script src="profile.js"></script>
 
 </body>
 </html>

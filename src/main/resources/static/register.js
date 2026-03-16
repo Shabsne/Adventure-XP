@@ -1,21 +1,3 @@
-async function loadRoles(){
-
-    const response = await fetch("/roles");
-    const roles = await response.json();
-
-    const roleSelect = document.getElementById("role");
-
-    roles.forEach(role => {
-
-        const option = document.createElement("option");
-        option.value = role;
-        option.text = role;
-
-        roleSelect.appendChild(option);
-
-    });
-}
-
 async function checkUser(){
 
     const response = await fetch("/me");
@@ -26,14 +8,37 @@ async function checkUser(){
 
     if(user.role === "Admin"){
 
-        document.getElementById("role").style.display = "block";
+        document.getElementById("role-container").style.display = "block";
+
         loadRoles();
     }
 }
 
-checkUser();
+async function loadRoles(){
 
-async function register(){
+    console.log("loading roles...")
+
+    const response = await fetch("/roles");
+
+    const roles = await response.json();
+
+    const roleSelect = document.getElementById("role");
+
+    roles.forEach(role => {
+
+        const option = document.createElement("option");
+
+        option.value = role;
+        option.text = role;
+
+        roleSelect.appendChild(option);
+
+    });
+}
+
+
+
+async function register(event){
 
     event.preventDefault();
 
@@ -41,7 +46,9 @@ async function register(){
 
     let role = null;
 
-    if(roleElement && roleElement.style.display !== "none"){
+    const roleContainer = document.getElementById("role-container");
+
+    if(roleContainer && roleContainer.style.display !== "none"){
         role = roleElement.value;
     }
 
@@ -84,3 +91,4 @@ async function register(){
     }
 }
 
+document.addEventListener("DOMContentLoaded", checkUser)
