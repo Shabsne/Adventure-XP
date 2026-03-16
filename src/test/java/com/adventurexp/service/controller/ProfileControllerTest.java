@@ -37,7 +37,7 @@ public class ProfileControllerTest {
         String json = """
         {
           "name":"JUnit",
-          "role":"Custommer",
+          "role":"Customer",
           "birthDate":"2000-01-01",
           "mail":"junit@test.dk",
           "password":"1234"
