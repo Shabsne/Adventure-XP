@@ -89,7 +89,7 @@ public class DataInit implements CommandLineRunner {
 
             Profile user = new Profile(
                     "Peter User",
-                    Role.Custommer,
+                    Role.Customer,
                     LocalDate.of(2000, 7, 15),
                     "user@adventurexp.dk",
                     "1234"

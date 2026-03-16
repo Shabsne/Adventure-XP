@@ -64,7 +64,7 @@ public class ProfileController {
         if (currentUser != null && currentUser.getRole() == Role.Admin) {
             role = request.getRole();
         } else {
-            role = Role.Custommer;
+            role = Role.Customer;
         }
 
 

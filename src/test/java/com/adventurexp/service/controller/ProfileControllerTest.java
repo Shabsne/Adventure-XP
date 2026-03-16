@@ -55,7 +55,7 @@ public class ProfileControllerTest {
 
         Profile profile = new Profile(
                 "Test",
-                Role.Custommer,
+                Role.Customer,
                 LocalDate.of(2000,1,1),
                 "test@test.dk",
                 "1234"

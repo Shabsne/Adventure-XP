@@ -76,7 +76,7 @@ async function register(event){
             const currentUser = await me.json();
 
             if(currentUser.role === "Admin"){
-                window.location.href = "/dashboard.html";
+                window.location.href = "/activity.html";
                 return;
             }
         }

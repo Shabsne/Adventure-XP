@@ -31,7 +31,7 @@ public class ProfileServiceTest {
 
         Profile profile = new Profile(
                 "Test User",
-                Role.Custommer,
+                Role.Customer,
                 LocalDate.of(2000, 1, 1),
                 "test@test.dk",
                 "1234"

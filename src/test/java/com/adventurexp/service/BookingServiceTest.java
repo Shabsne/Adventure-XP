@@ -54,7 +54,7 @@ public class BookingServiceTest {
         profile.setId(1);
         profile.setName("Test Bruger");
         profile.setBirthDate(LocalDate.of(1995, 5, 15)); // 30 år gammel
-        profile.setRole(Role.Custommer);
+        profile.setRole(Role.Customer);
 
         startTime = LocalDateTime.of(2025, 6, 1, 10, 0);
         endTime = LocalDateTime.of(2025, 6, 1, 11, 0);

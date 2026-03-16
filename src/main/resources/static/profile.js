@@ -101,16 +101,29 @@ let currentProfile = null;
 async function loadProfile() {
     try {
         const res = await fetch('/me');
+
         if (!res.ok) {
             window.location.href = '/login.html';
             return;
         }
+
         currentProfile = await res.json();
+
         if (!currentProfile) {
             window.location.href = '/login.html';
             return;
         }
+
+        // VIS ADMIN KNAP
+        if (currentProfile.role === "Admin") {
+            const btn = document.getElementById("create-user-btn");
+            if (btn) {
+                btn.style.display = "inline-block";
+            }
+        }
+
         renderProfile(currentProfile);
+
     } catch (e) {
         window.location.href = '/login.html';
     }
@@ -168,3 +181,4 @@ function showToast(message, type = 'success') {
         setTimeout(() => toast.remove(), 400);
     }, 3500);
 }
+
