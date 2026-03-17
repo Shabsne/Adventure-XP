@@ -16,6 +16,8 @@ async function checkUser(){
 
 async function loadRoles(){
 
+    console.log("loading roles...")
+
     const response = await fetch("/roles");
 
     const roles = await response.json();
@@ -36,7 +38,7 @@ async function loadRoles(){
 
 
 
-async function register(){
+async function register(event){
 
     event.preventDefault();
 
@@ -74,7 +76,7 @@ async function register(){
             const currentUser = await me.json();
 
             if(currentUser.role === "Admin"){
-                window.location.href = "/dashboard.html";
+                window.location.href = "/activity.html";
                 return;
             }
         }
@@ -89,5 +91,4 @@ async function register(){
     }
 }
 
-checkUser();
-
+document.addEventListener("DOMContentLoaded", checkUser)

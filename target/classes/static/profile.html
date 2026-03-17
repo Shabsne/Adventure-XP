@@ -16,7 +16,6 @@
     <div class="orb orb-3"></div>
 </div>
 
-<!-- HEADER -->
 <header class="main-header">
     <div class="header-inner">
         <a href="/dashboard" class="logo">Adventure<span>XP</span></a>
@@ -25,82 +24,51 @@
 </header>
 
 <main class="profile-wrapper">
-
-    <!-- PROFIL KORT -->
     <div class="profile-card" id="profile-card">
 
-        <!-- VISNINGS-TILSTAND -->
-        <div id="view-mode">
-            <div class="profile-avatar" id="avatar-initials"></div>
+        <div class="profile-avatar" id="avatar-initials"></div>
 
-            <div class="profile-name-row">
-                <h2 id="view-name"></h2>
-                <span class="role-badge" id="view-role"></span>
+        <div class="profile-name-row">
+            <h2 id="view-name"></h2>
+            <span class="role-badge" id="view-role"></span>
+        </div>
+
+        <div class="profile-fields">
+            <div class="profile-field">
+                <span class="field-label">Navn</span>
+                <span class="field-value" id="view-name-field"></span>
             </div>
-
-            <div class="profile-fields">
-                <div class="profile-field">
-                    <span class="field-label">E-mail</span>
-                    <span class="field-value" id="view-mail"></span>
-                </div>
-                <div class="profile-field">
-                    <span class="field-label">Fødselsdato</span>
-                    <span class="field-value" id="view-birth"></span>
-                </div>
+            <div class="profile-field">
+                <span class="field-label">E-mail</span>
+                <span class="field-value" id="view-mail"></span>
             </div>
-
-            <div class="profile-actions">
-                <button class="btn-edit" onclick="enterEditMode()">Rediger oplysninger</button>
-                <button class="btn-logout" onclick="logout()">Log ud</button>
+            <div class="profile-field">
+                <span class="field-label">Fødselsdato</span>
+                <span class="field-value" id="view-birth"></span>
+            </div>
+            <div class="profile-field">
+                <span class="field-label">Adgangskode</span>
+                <span class="field-value field-password" id="view-password">••••••••</span>
+            </div>
+            <div class="profile-field">
+                <span class="field-label">Rolle</span>
+                <span class="field-value" id="view-role-field"></span>
             </div>
         </div>
 
-        <!-- REDIGERINGS-TILSTAND -->
-        <div id="edit-mode" class="hidden">
-            <h2 class="edit-title">Rediger oplysninger</h2>
+        <div class="profile-actions">
+            <button id="create-user-btn"
+                    class="btn-action"
+                    style="display:none"
+                    onclick="window.location.href='/register.html'">
+                Opret bruger
+            </button>
 
-            <div class="form-group">
-                <label class="form-label">Navn</label>
-                <input type="text" id="edit-name" class="form-input" />
-            </div>
-
-            <div class="form-group">
-                <label class="form-label">E-mail</label>
-                <input type="email" id="edit-mail" class="form-input" />
-            </div>
-
-            <div class="form-group">
-                <label class="form-label">Fødselsdato</label>
-                <input type="date" id="edit-birth" class="form-input" />
-            </div>
-
-            <div class="form-group">
-                <label class="form-label">Ny adgangskode <span class="field-optional">(lad stå tom for at beholde)</span></label>
-                <input type="password" id="edit-password" class="form-input" placeholder="••••••••" />
-            </div>
-
-            <div class="profile-actions">
-                <button class="btn-auth" id="save-btn" onclick="saveProfile()">Gem ændringer</button>
-                <button class="btn-cancel" onclick="exitEditMode()">Annuller</button>
-                <button class="btn-delete" onclick="openDeleteModal()">Slet min konto</button>
-            </div>
+            <button class="btn-logout" onclick="logout()">Log ud</button>
         </div>
 
     </div>
-
 </main>
-
-<!-- TOAST -->
-<div id="modal-overlay" class="modal-overlay hidden" onclick="closeDeleteModal()">
-    <div class="modal modal-small" onclick="event.stopPropagation()">
-        <h2 class="modal-delete-title">Slet konto</h2>
-        <p class="modal-delete-desc">Er du sikker? Dette kan ikke fortrydes og alle dine bookinger slettes.</p>
-        <div class="modal-delete-actions">
-            <button class="btn-delete-confirm" onclick="confirmDelete()">Ja, slet min konto</button>
-            <button class="btn-cancel" onclick="closeDeleteModal()">Annuller</button>
-        </div>
-    </div>
-</div>
 
 <script src="profile.js"></script>
 </body>

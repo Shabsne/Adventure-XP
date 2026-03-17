@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdventureXP | Mine Bookinger</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ── BOOKINGS-SPECIFIKKE STYLES ──────────────────────── */
+
+        .bookings-wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 0 80px;
+        }
+
+        /* ── FILTER BAR ─────────────────────────────────────── */
+        .filter-bar {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+
+        .filter-btn {
+            padding: 9px 20px;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+            color: var(--muted);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .filter-btn:hover {
+            border-color: var(--indigo);
+            color: white;
+        }
+
+        .filter-btn.active {
+            background: var(--indigo);
+            border-color: var(--indigo);
+            color: white;
+            box-shadow: 0 4px 16px rgba(79,110,247,0.3);
+        }
+
+        /* ── STATS ROW ──────────────────────────────────────── */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 14px;
+            margin-bottom: 36px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px 22px;
+            backdrop-filter: blur(20px);
+            text-align: center;
+            animation: fadeUp 0.4s ease both;
+        }
+
+        .stat-card:nth-child(1) { animation-delay: 0.05s; }
+        .stat-card:nth-child(2) { animation-delay: 0.10s; }
+        .stat-card:nth-child(3) { animation-delay: 0.15s; }
+        .stat-card:nth-child(4) { animation-delay: 0.20s; }
+
+        .stat-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.4rem;
+            letter-spacing: 2px;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .stat-active   .stat-number { color: #4f6ef7; }
+        .stat-done     .stat-number { color: #10b981; }
+        .stat-noshow   .stat-number { color: #f59e0b; }
+        .stat-total    .stat-number { color: var(--text); }
+
+        /* ── BOOKING KORT ───────────────────────────────────── */
+        .bookings-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .booking-row {
+            display: grid;
+            grid-template-columns: auto 1fr auto auto;
+            align-items: center;
+            gap: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 20px 24px;
+            backdrop-filter: blur(20px);
+            transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+            animation: fadeUp 0.45s ease both;
+        }
+
+        .booking-row:hover {
+            border-color: rgba(79,110,247,0.35);
+            transform: translateX(4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+        }
+
+        /* Left: date block */
+        .booking-date-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 56px;
+            background: var(--indigo-dim);
+            border: 1px solid rgba(79,110,247,0.2);
+            border-radius: 12px;
+            padding: 10px 12px;
+            gap: 2px;
+        }
+
+        .booking-day {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.7rem;
+            letter-spacing: 1px;
+            color: #a5b4fc;
+            line-height: 1;
+        }
+
+        .booking-month {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        /* Middle: info */
+        .booking-info { min-width: 0; }
+
+        .booking-activity-name {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .booking-meta {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .booking-meta span {
+            font-size: 0.78rem;
+            color: var(--muted);
+            font-weight: 400;
+        }
+
+        .booking-meta .dot {
+            width: 3px; height: 3px;
+            border-radius: 50%;
+            background: var(--border);
+            flex-shrink: 0;
+        }
+
+        .exclusive-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.68rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--amber) !important;
+            background: var(--amber-dim);
+            border: 1px solid rgba(245,158,11,0.2);
+            padding: 3px 9px;
+            border-radius: 20px;
+        }
+
+        /* Status badge */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .status-badge::before {
+            content: '';
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .status-ACTIVE    { background: rgba(79,110,247,0.12); color: #818cf8; border: 1px solid rgba(79,110,247,0.25); }
+        .status-ACTIVE::before    { background: #818cf8; box-shadow: 0 0 6px #818cf8; animation: pulse 2s infinite; }
+        .status-COMPLETED { background: rgba(16,185,129,0.12); color: #34d399; border: 1px solid rgba(16,185,129,0.25); }
+        .status-COMPLETED::before { background: #34d399; }
+        .status-NO_SHOW   { background: rgba(245,158,11,0.12); color: #fbbf24; border: 1px solid rgba(245,158,11,0.25); }
+        .status-NO_SHOW::before   { background: #fbbf24; }
+        .status-CANCELLED { background: rgba(239,68,68,0.10); color: #f87171; border: 1px solid rgba(239,68,68,0.2); }
+        .status-CANCELLED::before { background: #f87171; }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: 0.4; }
+        }
+
+        /* Right: actions */
+        .booking-actions {
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .action-btn {
+            padding: 8px 16px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--muted);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .action-btn:hover {
+            border-color: rgba(255,255,255,0.2);
+            color: white;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .action-btn.danger:hover {
+            border-color: #ef4444;
+            color: #fca5a5;
+            background: rgba(239,68,68,0.06);
+        }
+
+        /* ── EMPTY STATE ────────────────────────────────────── */
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            color: var(--muted);
+            animation: fadeUp 0.5s ease both;
+        }
+
+        .empty-icon {
+            font-size: 3.5rem;
+            margin-bottom: 16px;
+            opacity: 0.4;
+        }
+
+        .empty-state h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .empty-state p {
+            font-size: 0.88rem;
+            font-weight: 300;
+            margin-bottom: 24px;
+        }
+
+        /* ── LOADING SKELETON ───────────────────────────────── */
+        .skeleton {
+            background: linear-gradient(90deg,
+            rgba(255,255,255,0.04) 25%,
+            rgba(255,255,255,0.08) 50%,
+            rgba(255,255,255,0.04) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 18px;
+            height: 82px;
+        }
+
+        @keyframes shimmer {
+            0%   { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* ── RESPONSIVE ─────────────────────────────────────── */
+        @media (max-width: 640px) {
+            .booking-row {
+                grid-template-columns: auto 1fr;
+                grid-template-rows: auto auto;
+            }
+            .booking-actions { grid-column: 1 / -1; }
+            .status-badge    { grid-column: 2; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+</div>
+
+<header class="main-header">
+    <div class="header-inner">
+        <a href="/activity.html" class="logo">Adventure<span>XP</span></a>
+        <p class="tagline">Alle bookinger</p>
+    </div>
+    <a href="/profile.html" class="header-profile" title="Min profil">Min profil</a>
+</header>
+
+<main class="bookings-wrapper">
+
+    <!-- STATS -->
+    <div class="stats-row" id="stats-row">
+        <div class="stat-card stat-total">
+            <div class="stat-number" id="stat-total">–</div>
+            <div class="stat-label">I alt</div>
+        </div>
+        <div class="stat-card stat-active">
+            <div class="stat-number" id="stat-active">–</div>
+            <div class="stat-label">Aktive</div>
+        </div>
+        <div class="stat-card stat-done">
+            <div class="stat-number" id="stat-done">–</div>
+            <div class="stat-label">Gennemført</div>
+        </div>
+        <div class="stat-card stat-noshow">
+            <div class="stat-number" id="stat-noshow">–</div>
+            <div class="stat-label">Udeblivelse</div>
+        </div>
+    </div>
+
+    <!-- FILTER -->
+    <div class="filter-bar">
+        <button class="filter-btn active" data-filter="ALL"       onclick="applyFilter(this)">Alle</button>
+        <button class="filter-btn"        data-filter="ACTIVE"    onclick="applyFilter(this)">Aktive</button>
+        <button class="filter-btn"        data-filter="COMPLETED" onclick="applyFilter(this)">Gennemført</button>
+        <button class="filter-btn"        data-filter="NO_SHOW"   onclick="applyFilter(this)">Udeblivelse</button>
+        <button class="filter-btn"        data-filter="CANCELLED" onclick="applyFilter(this)">Aflyst</button>
+    </div>
+
+    <!-- LISTE -->
+    <div class="bookings-list" id="bookings-list">
+        <!-- Skeletons mens vi henter -->
+        <div class="skeleton"></div>
+        <div class="skeleton" style="animation-delay:.1s"></div>
+        <div class="skeleton" style="animation-delay:.2s"></div>
+    </div>
+
+</main>
+
+<script src="bookings.js"></script>
+</body>
+</html>

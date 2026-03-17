@@ -1,27 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="da">
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdventureXP | Login</title>
+
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 
-<h2>Login</h2>
+<div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+</div>
 
-<form id="loginForm">
+<header class="main-header">
+    <div class="header-inner">
+        <div class="logo">Adventure<span>XP</span></div>
+        <p class="tagline">Log ind for at booke oplevelser</p>
+    </div>
+</header>
 
-    <label>Email</label>
-    <input type="text" id="mail">
+<main class="login-container">
 
-    <label>Password</label>
-    <input type="password" id="password">
+    <form class="login-card" onsubmit="login(event)">
 
-    <button onclick="login()">Login</button>
+        <h2>Log ind</h2>
 
-</form>
+        <label>Email</label>
+        <input id="mail" type="email" required>
 
-<p id="error"></p>
+        <label>Adgangskode</label>
+        <input id="password" type="password" required>
 
-<script src="Profile.js"></script>
+        <button type="submit" class="btn-action">Log ind</button>
+
+        <div class="login-divider">
+            <span>eller</span>
+        </div>
+
+        <a href="/register.html" class="btn-secondary">Opret bruger</a>
+
+        <p id="error" class="login-error"></p>
+
+    </form>
+
+</main>
+
+<script src="login.js"></script>
 
 </body>
 </html>
