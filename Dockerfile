@@ -21,3 +21,4 @@ COPY --from=build /app/target/*.jar app.jar
 
 # Start applikationen
 ENTRYPOINT ["java", "-jar", "app.jar"]
+
